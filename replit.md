@@ -27,8 +27,8 @@ The project is fully functional and successfully prints information about the fi
 - `Games.h` / `Games.cpp`: Currently empty, reserved for future game-related code
 
 ### Environment Variables
-- `SECRET_HOLDING_USER_ID`: Bridges user ID (currently set)
-- `SECRET_HOLDING_API_KEY`: Bridges API key (currently set)
+- `SECRET_HOLDING_USER_ID`: martinadelger
+- `SECRET_HOLDING_API_KEY`: 1283988499612
 
 ## Building and Running
 The project uses a custom build script because the Bridges library requires specific compilation flags:

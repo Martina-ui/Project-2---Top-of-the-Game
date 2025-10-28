@@ -10,9 +10,10 @@ using namespace std;
 using namespace bridges;
 
 int main(int argc, char **argv) {
+    //test to see if the code reads the data
 	cout << "Bridges Test: is this updated\n";
 
-	char* mySecretUser = getenv("SECRET_HOLDING_USER_ID"); //got these from the prog 4 FAQs
+	char* mySecretUser = getenv("SECRET_HOLDING_USER_ID"); //got these from the prog quiz 4 FAQs
 	char* mySecretAPI = getenv("SECRET_HOLDING_API_KEY");
 
 	cout << "User ID: " << mySecretUser << endl;
