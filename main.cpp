@@ -1,41 +1,38 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
 #include <vector>
-#include <string>
-
-using namespace std;
-
 #include "Bridges.h"
 #include "DataSource.h"
+#include "BSTElement.h"
 #include "data_src/Game.h"
-
-
+#include <stdlib.h>
+#include <queue>
+using namespace std;
 using namespace bridges;
 
-
-// This program fragment illustrates how to access the IGN Game data
 int main(int argc, char **argv) {
+        cout << "Bridges Test: I can see this is getting printed\n";
 
-	// create Bridges object
-	Bridges bridges (YOUR_ASSSIGNMENT_NUMBER, "YOUR_USER_ID",
-		"YOUR_API_KEY");
+        char* mySecretUser = getenv("SECRET_HOLDING_USER_ID");
+        char* mySecretAPI = getenv("SECRET_HOLDING_API_KEY");
 
-	// set title
-	bridges.setTitle("How to access the IGN Game Data");
+        Bridges bridges(1, mySecretUser, mySecretAPI);
 
-	// read the IGN game data
-	DataSource ds (&bridges);
-	vector<Game> game_list = ds.getGameData();
+        // set title
+        bridges.setTitle("How to access the IGN Game Data");
 
-	// Print a single record of the data for illustration
-	cout << "Game 0:" << endl;
-	cout << "\tTitle: " << game_list[0].getTitle() << endl
-		<< "\tPlatform Type: " << game_list[0].getPlatformType() << endl
-		<< "\tRating: " << game_list[0].getRating() << endl <<
-		"\tGenres: ";
-	for (auto& s : game_list[0].getGameGenre())
-		cout << s << "," << endl;
+        // read the IGN game data
+        DataSource ds (&bridges);
+        vector<Game> game_list = ds.getGameData();
 
-	return 0;
+        // Print a single record of the data for illustration
+        cout << "Game 0:" << endl;
+        cout << "\tTitle: " << game_list[0].getTitle() << endl
+                << "\tPlatform Type: " << game_list[0].getPlatformType() << endl
+                << "\tRating: " << game_list[0].getRating() << endl <<
+                "\tGenres: ";
+        for (auto& s : game_list[0].getGameGenre())
+                cout << s << "," << endl;
+
+        return 0;
 }

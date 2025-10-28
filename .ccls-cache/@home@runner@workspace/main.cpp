@@ -1,25 +1,25 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
 #include <vector>
-#include <string>
-
-using namespace std;
-
 #include "Bridges.h"
 #include "DataSource.h"
+#include "BSTElement.h"
 #include "data_src/Game.h"
-
-
+#include <stdlib.h>
+#include <queue>
+using namespace std;
 using namespace bridges;
 
-
-// This program fragment illustrates how to access the IGN Game data
 int main(int argc, char **argv) {
+	cout << "Bridges Test: I can see this is getting printed\n";
 
-	// create Bridges object
-	Bridges bridges (YOUR_ASSSIGNMENT_NUMBER, "YOUR_USER_ID",
-		"YOUR_API_KEY");
+	char* mySecretUser = getenv("SECRET_HOLDING_USER_ID"); //got these from the prog 4 FAQs
+	char* mySecretAPI = getenv("SECRET_HOLDING_API_KEY");
+
+	cout << "User ID: " << mySecretUser << endl;
+	cout << "API Key: " << mySecretAPI << endl;
+
+	Bridges bridges(1, mySecretUser, mySecretAPI);
 
 	// set title
 	bridges.setTitle("How to access the IGN Game Data");
