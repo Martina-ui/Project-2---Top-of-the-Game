@@ -1,26 +1,36 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
 #include <vector>
-#include <string>
-
-using namespace std;
-
 #include "Bridges.h"
 #include "DataSource.h"
 #include "data_src/Game.h"
-
-
+#include <stdlib.h>
+#include <queue>
+using namespace std;
 using namespace bridges;
 
+<<<<<<< HEAD
 
 // ...existing code...
+=======
+>>>>>>> origin/replit-changes
 int main(int argc, char **argv) {
+	cout << "Bridges Test: is this updated\n";
 
+<<<<<<< HEAD
     // Read credentials from environment
     const char* asn_env = getenv("BRIDGES_ASSIGNMENT");
     const char* user_env = getenv("BRIDGES_USER");
     const char* key_env  = getenv("BRIDGES_KEY");
+=======
+	char* mySecretUser = getenv("SECRET_HOLDING_USER_ID"); //got these from the prog 4 FAQs
+	char* mySecretAPI = getenv("SECRET_HOLDING_API_KEY");
+
+	cout << "User ID: " << mySecretUser << endl;
+	cout << "API Key: " << mySecretAPI << endl;
+
+	Bridges bridges(1, mySecretUser, mySecretAPI);
+>>>>>>> origin/replit-changes
 
     if (!asn_env || !user_env || !key_env) {
         cerr << "ERROR: set BRIDGES_ASSIGNMENT, BRIDGES_USER and BRIDGES_KEY environment variables.\n";

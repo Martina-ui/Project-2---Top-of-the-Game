@@ -1,0 +1,25 @@
+# Compiled binaries
+game_program
+*.o
+*.out
+
+# Dependencies (downloaded libraries)
+rapidjson/
+Bridges.h
+DataSource.h
+BSTElement.h
+data_src/
+*.h
+*.cpp
+!main.cpp
+!Games.h
+!Games.cpp
+
+# Build artifacts
+*.a
+*.so
+
+# IDE files
+.vscode/
+.idea/
+*.swp
