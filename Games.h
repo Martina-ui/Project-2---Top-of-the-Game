@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
+#pragma once
 
 class Games {
     private:
@@ -25,6 +26,5 @@ class Games {
         void insert(const Games& game);
         Games extractMax();
         bool isEmpty() const;
-
         //merge sort functions
 };

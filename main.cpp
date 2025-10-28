@@ -4,16 +4,24 @@
 #include "Bridges.h"
 #include "DataSource.h"
 #include "data_src/Game.h"
+#include "Games.h" //is this needed?
 #include <stdlib.h>
 #include <queue>
 using namespace std;
 using namespace bridges;
 
+//to run main in the terminal use these commands:
+//chmod +x run.sh
+// export SECRET_HOLDING_USER_ID=martinadelger -> only needed when you first run it
+// export SECRET_HOLDING_API_KEY=1283988499612 -> only needed when you first run it
+// ./run.sh
+
 int main(int argc, char **argv) {
     //test to see if the code reads the data
-	cout << "Bridges Test: is this updated\n";
+	cout << "Bridges Test: is this printed\n";
 
-	char* mySecretUser = getenv("SECRET_HOLDING_USER_ID"); //got these from the prog quiz 4 FAQs
+	//got these from the prog quiz 4 FAQs
+	char* mySecretUser = getenv("SECRET_HOLDING_USER_ID"); 
 	char* mySecretAPI = getenv("SECRET_HOLDING_API_KEY");
 
 	cout << "User ID: " << mySecretUser << endl;
@@ -21,21 +29,27 @@ int main(int argc, char **argv) {
 
 	Bridges bridges(1, mySecretUser, mySecretAPI);
 
-	// set title
+	//set title
 	bridges.setTitle("How to access the IGN Game Data");
 
-	// read the IGN game data
+	//read the IGN game data
 	DataSource ds (&bridges);
 	vector<Game> game_list = ds.getGameData();
 
-	// Print a single record of the data for illustration
+	//Print a single record of the data for illustration
 	cout << "Game 0:" << endl;
 	cout << "\tTitle: " << game_list[0].getTitle() << endl
 		<< "\tPlatform Type: " << game_list[0].getPlatformType() << endl
 		<< "\tRating: " << game_list[0].getRating() << endl <<
 		"\tGenres: ";
-	for (auto& s : game_list[0].getGameGenre())
+
+	for (auto& s : game_list[0].getGameGenre()) {
+		if (s == game_list[0].getGameGenre().back()) {
+			cout << s << endl;
+			break;
+		}
 		cout << s << "," << endl;
+	}
 
 	return 0;
 }
