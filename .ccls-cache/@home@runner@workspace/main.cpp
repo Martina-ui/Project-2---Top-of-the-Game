@@ -3,7 +3,6 @@
 #include <vector>
 #include "Bridges.h"
 #include "DataSource.h"
-#include "BSTElement.h"
 #include "data_src/Game.h"
 #include <stdlib.h>
 #include <queue>
@@ -11,7 +10,7 @@ using namespace std;
 using namespace bridges;
 
 int main(int argc, char **argv) {
-	cout << "Bridges Test: I can see this is getting printed\n";
+	cout << "Bridges Test: is this updated\n";
 
 	char* mySecretUser = getenv("SECRET_HOLDING_USER_ID"); //got these from the prog 4 FAQs
 	char* mySecretAPI = getenv("SECRET_HOLDING_API_KEY");
