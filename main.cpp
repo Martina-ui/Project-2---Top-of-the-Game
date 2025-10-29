@@ -4,7 +4,8 @@
 #include "Bridges.h"
 #include "DataSource.h"
 #include "data_src/Game.h"
-#include "Games.h" //is this needed?
+#include "Games.h" 
+#include "Menu.h"
 #include <stdlib.h>
 #include <queue>
 using namespace std;
@@ -50,6 +51,9 @@ int main(int argc, char **argv) {
 		}
 		cout << s << "," << endl;
 	}
+
+	// Menu menu; //uncomment once menu manager is done to test
+	// menu.run_menu();
 
 	return 0;
 }
