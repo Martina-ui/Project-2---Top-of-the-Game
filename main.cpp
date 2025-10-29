@@ -13,8 +13,8 @@ using namespace bridges;
 
 //to run main in the terminal use these commands:
 //chmod +x run.sh
-// export SECRET_HOLDING_USER_ID=martinadelger -> only needed when you first run it
-// export SECRET_HOLDING_API_KEY=1283988499612 -> only needed when you first run it
+// export SECRET_HOLDING_USER_ID=martinadelger -> only needed when you first run the program
+// export SECRET_HOLDING_API_KEY=1283988499612 -> only needed when you first run the program
 // ./run.sh
 
 int main(int argc, char **argv) {
