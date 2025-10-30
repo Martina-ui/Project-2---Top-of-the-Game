@@ -14,6 +14,10 @@ data_src/
 !main.cpp
 !Games.h
 !Games.cpp
+!Menu.cpp
+!Menu.h
+!MenuManager.cpp
+!MenuManager.h
 
 # Build artifacts
 *.a
