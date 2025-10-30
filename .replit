@@ -1,0 +1,30 @@
+modules = ["cpp-clang14"]
+[agent]
+expertMode = true
+
+[nix]
+channel = "stable-25_05"
+packages = ["curl", "rapidjson"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Game Program"
+
+[[workflows.workflow]]
+name = "Game Program"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "./run.sh"
+
+[workflows.workflow.metadata]
+outputType = "console"
