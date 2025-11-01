@@ -1,9 +1,10 @@
-#include "Game.h"
+#include "Games.h"           //local Games class
+#include "data_src/Game.h"   //Bridges Game class (from Martina)
 #include <vector>
 #include <string>
 #include <iostream>
-#include <chrono>   //timing
-#include <cstddef>  //size
+#include <chrono>   // timing
+#include <cstddef>  // sizeof
 
 using namespace std;
 
@@ -13,7 +14,7 @@ static bool isBetter(const Games &a, const Games &b) {
 
 class MaxHeap {
 private:
-    vector<Games> heap;  
+    vector<Games> heap;
 
     int leftChild(int i) const  { return 2 * i + 1; }
     int rightChild(int i) const { return 2 * i + 2; }
@@ -59,7 +60,7 @@ public:
     MaxHeap() {}
 
     MaxHeap(const vector<Games> &items) {
-        heap = items; 
+        heap = items;
         for (int i = (int)heap.size() / 2; i >= 0; --i) {
             heapifyDown(i);
         }
@@ -103,7 +104,7 @@ vector<Games> getTopN_Heap(const vector<Games> &allGames, int N) {
     result.reserve(N);
 
     for (int i = 0; i < N && !heap.empty(); i++) {
-        Games g = heap.extractMax();
+        Games g = heap.extractMax(); 
         result.push_back(g);
     }
 
@@ -130,7 +131,6 @@ vector<Games> getTopN_Heap(const vector<Games> &allGames, int N) {
     return result;
 }
 
-//delete later
 void printGame(const Games &g) {
     cout << "Title: " << g.get_title()
          << " | Platform: " << g.get_platform_type()
@@ -143,4 +143,38 @@ void printGame(const Games &g) {
         if (i + 1 < gs.size()) cout << ", ";
     }
     cout << "\n";
+}
+
+vector<Games> convertBridgesToLocal(const vector<Game>& bridgeList) {
+    vector<Games> result;
+    result.reserve(bridgeList.size());
+
+    for (const auto& g : bridgeList) {
+        // pull info from Bridges' Game
+        string title        = g.getTitle();
+        string platform     = g.getPlatformType();
+        vector<string> genres = g.getGameGenre();
+        float rating        = g.getRating();
+
+        // build our local Games object
+        Games local(title, platform, genres, rating);
+        result.push_back(local);
+    }
+
+    return result;
+}
+
+//This is what main() or MenuManager will call.
+void runHeapTopNOnDataset(const vector<Game>& bridgeList, int N) {
+    vector<Games> localList = convertBridgesToLocal(bridgeList);
+
+    vector<Games> topN = getTopN_Heap(localList, N);
+
+    std::cout << "\n===== Top " << N << " Games by Rating (Heap) =====\n";
+    for (const auto& g : topN) {
+        printGame(g);
+    }
+
+    
+    std::cout << "=============================================\n";
 }
