@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "data_src/Game.h"
 using namespace std;
 #pragma once
 
@@ -24,3 +25,11 @@ class Games {
         void set_genres(const vector<string>& g) { genre = g; }
         void set_rating(float r) { rating = r; };
 };
+
+std::vector<Games> convertBridgesToLocal(const std::vector<Game>& bridgeList);
+
+void runHeapTopNOnDataset(const std::vector<Game>& bridgeList, int N);
+
+std::vector<Games> getTopN_Heap(const std::vector<Games>& allGames, int N);
+
+void printGame(const Games& g);
