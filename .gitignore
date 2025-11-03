@@ -13,7 +13,7 @@ data_src/
 *.cpp
 !main.cpp
 !Games.h
-!Games.cpp
+!HeapSort.cpp
 !Menu.cpp
 !Menu.h
 !MenuManager.cpp

@@ -6,7 +6,7 @@
 std::vector<Games> getTopN_Heap(const std::vector<Games> &allGames, int N);
 void printGame(const Games &g);
 
-int main() {
+int heap() {
     Games g1("Elden Ring", "PC", {"RPG", "Open World"}, 9.7f);
     Games g2("Animal Crossing", "Switch", {"Simulation", "Casual"}, 9.1f);
     Games g3("Call of Duty", "Xbox", {"Shooter"}, 8.4f);
