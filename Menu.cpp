@@ -10,15 +10,15 @@ void  Menu::run_menu() {
    MenuManager menuManager;
    HeapSort Maxheap;
     while (true) {
-        cout << " __________________________________"<< endl;
+        cout << " __________________________________"  << endl;
         cout << "|           Main Menu              |" << endl;
-        cout << "|  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   |"<< endl;
+        cout << "|  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   |" << endl;
         cout << "|           Merge Sort             |" << endl; 
         cout << "|      1. Show Top 10 Games        |" << endl; 
         cout << "|      2. Show Top N Games         |" << endl;
         cout << "|  3. Show Top N Games by Genre    |" << endl;
         cout << "|  4. Show Top N Games by Platform |" << endl;
-        cout << "|  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   |"<< endl;
+        cout << "|  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   |" << endl;
         cout << "|           Heap Sort              |" << endl; 
         cout << "|      5. Show Top 10 Games        |" << endl; 
         cout << "|      6. Show Top N Games         |" << endl;
