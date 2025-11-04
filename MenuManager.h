@@ -14,8 +14,8 @@ class MenuManager {
 public:
     //merge sort functions
     vector<Games> get_games_data();
-    vector<Games> get_top_N_games_mergeSort(int n);
-    vector<Games> get_top_N_games_by_genre_mergeSort(const string& genre, int n); 
-    vector<Games> get_top_N_games_by_platform_mergeSort(const string& platform, int n); 
+    void get_top_N_games_mergeSort(int n);
+    void get_top_N_games_by_genre_mergeSort(const string& genre, int n); 
+    void get_top_N_games_by_platform_mergeSort(const string& platform, int n); 
     //void compare_sort_performance(int n);
 };

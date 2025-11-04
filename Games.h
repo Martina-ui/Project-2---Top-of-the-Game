@@ -1,5 +1,8 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include <stddef.h>
+
 using namespace std;
 #pragma once
 

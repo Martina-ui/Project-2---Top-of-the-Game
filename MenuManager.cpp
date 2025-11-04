@@ -92,7 +92,7 @@ void MenuManager::mergeSort(vector<Games>& data, int left, int right) {
     cout << endl;
 }
 
-vector<Games> MenuManager::get_top_N_games_mergeSort(int n) {
+void MenuManager::get_top_N_games_mergeSort(int n) {
 	auto start = chrono::high_resolution_clock::now();
 	vector<Games> games = get_games_data();
 	mergeSort(games, 0, games.size() - 1);
@@ -115,7 +115,7 @@ vector<Games> MenuManager::get_top_N_games_mergeSort(int n) {
 	}
 }
 
-vector<Games> MenuManager::get_top_N_games_by_genre_mergeSort(const string& genre, int n) { 
+void MenuManager::get_top_N_games_by_genre_mergeSort(const string& genre, int n) { 
 	vector<Games> games = get_games_data();
 	vector<Games> updated_games;
 	for (int i = 0; i < games.size(); i++) {
@@ -147,7 +147,7 @@ vector<Games> MenuManager::get_top_N_games_by_genre_mergeSort(const string& genr
 	cout << "Merge Sort: " << duration.count() << " microseconds" << endl;
 }
 
-vector<Games> MenuManager::get_top_N_games_by_platform_mergeSort(const string& platform, int n) {
+void MenuManager::get_top_N_games_by_platform_mergeSort(const string& platform, int n) {
 	vector<Games> games = get_games_data();
 	vector<Games> updated_games;
 	for (int i = 0; i < games.size(); i++) {

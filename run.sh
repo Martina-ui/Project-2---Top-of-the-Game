@@ -15,12 +15,15 @@ if [ -z "$SECRET_HOLDING_USER_ID" ] || [ -z "$SECRET_HOLDING_API_KEY" ]; then
   exit 1
 fi
 
+# collect project sources (top-level .cpp files except main.cpp)
+PROJECT_SRCS=$(find . -maxdepth 1 -name '*.cpp' -not -name 'main.cpp' -print | tr '\n' ' ')
+
 # compile
 if [ -n "$BRIDGE_SRCS" ]; then
-  g++ $CPPFLAGS main.cpp $BRIDGE_SRCS $INCLUDE_DIRS \
+  g++ $CPPFLAGS main.cpp $PROJECT_SRCS $BRIDGE_SRCS $INCLUDE_DIRS \
     $(curl-config --cflags --libs 2>/dev/null || true) -ljsoncpp -lcurl -lssl -lcrypto -o read_ign
 else
-  g++ $CPPFLAGS main.cpp $INCLUDE_DIRS $(curl-config --cflags --libs 2>/dev/null || true) \
+  g++ $CPPFLAGS main.cpp $PROJECT_SRCS $INCLUDE_DIRS $(curl-config --cflags --libs 2>/dev/null || true) \
     -ljsoncpp -lcurl -lssl -lcrypto -o read_ign
 fi
 
