@@ -40,7 +40,7 @@ void MenuManager::get_top_N_games(int n) {
 	mergeSort(games, 0, games.size() - 1);
 	auto end = chrono::high_resolution_clock::now();
 	auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-	cout << "Merge Sort: " << duration.count() << " microseconds" << endl;
+
 
 	for (int i = 0; i < n; i++) {
 		//cout << games[i].get_title() << endl;
@@ -55,6 +55,9 @@ void MenuManager::get_top_N_games(int n) {
          cout << endl << endl;
 
 	}
+    cout<< "\e[1;36m-----------------------------------------" << endl;
+	cout << "\e[1;37mMerge Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
+    cout << endl << endl << endl;
 }
 
 
@@ -87,8 +90,9 @@ void MenuManager::get_top_N_games_by_genre(const string& genre, int n) {
 
 cout << endl;
 	}
-	cout << "Merge Sort: " << duration.count() << " microseconds" << endl;
-
+     cout<< "\e[1;36m-----------------------------------------" << endl;
+	cout << "\e[1;37mMerge Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
+    cout << endl << endl << endl;
 }
 
 //merge sort
@@ -119,7 +123,9 @@ void MenuManager::get_top_N_games_by_platform(const string& platform, int n) {
 cout << endl;
 
 	}
-	cout << "Merge Sort: " << duration.count() << " microseconds" << endl;
+	 cout<< "\e[1;36m-----------------------------------------" << endl;
+	cout << "\e[1;37mMerge Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
+    cout << endl << endl << endl;
 }
 
 void MenuManager::get_top_N_games_by_rank(const float& rank, int n){
@@ -149,6 +155,7 @@ void MenuManager::get_top_N_games_by_rank(const float& rank, int n){
     cout << endl;
 
 	}
-       // cout <<
-	cout << "Merge Sort: " << duration.count() << " microseconds" << endl;
+    cout<< "\e[1;36m-----------------------------------------" << endl;
+	cout << "\e[1;37mMerge Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
+    cout << endl << endl << endl;
 }

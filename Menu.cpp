@@ -14,7 +14,8 @@ void  Menu::run_menu() {
        cout << "\e[1;97m           W E L C O M E             "<< endl;
        cout << "                 t o                  "<< endl;
        cout << "\e[3m         T O P  OF  THE  GAME         \e[0m"<< endl;
-       cout << "ready to see the games that are on the top of there game?" << endl;
+       cout << endl;
+       cout << "are you ready?" << endl;
        cout << "\033[32mpress y to continue" << endl;
     getline(cin, yn);
     istringstream inStream(yn);
@@ -48,7 +49,8 @@ void  Menu::run_menu() {
               cout <<"\e[1;93m|" << endl;
         cout << "\e[1;93m ---------------------------------- "<< endl;
         cout << endl;
-        cout << "\033[32mEnter your choice: ";
+        cout << "\e[0;32mEnter your choice: ";
+        cout << endl << endl;
 
         string user_choice;
         string user_input;
@@ -81,10 +83,12 @@ void  Menu::run_menu() {
             cout << "press y for yes or n for no" << endl;
             getline(cin, yn);
             if (yn == "y") {
-                cout << "\e[0;33mAction      Shooter      Puzzle" << endl;
-                cout << "Sports     Simulation      RPG " << endl;
-                cout << "Music       Adventure     Racing " << endl;
-                cout << "Fighting    Strategy   Platformer" << endl;
+                cout << "\e[4;33m              Genre Menu             " << endl;
+                cout << "\e[0;33mAction         Shooter        Puzzle" << endl;
+                cout << "Sports        Simulation        RPG " << endl;
+                cout << "Music         Adventure       Racing " << endl;
+                cout << "Fighting      Strategy     Platformer" << endl;
+                cout << endl << endl;
 
             }
             cout<< "\e[0;37mEnter the desired genre: " <<endl;
@@ -101,12 +105,15 @@ void  Menu::run_menu() {
             cout << "press y for yes or n for no" << endl;
             getline(cin, yn);
             if (yn == "y") {
-                cout << "Playstation(1, 2,3,4, Vita)" << endl;
-                cout << "Macintosh    Nintendo (3DS)" << endl;
-                cout << "Xbox (One, 360)  iPhone  PC" << endl;
+                cout << "\e[4;33m              Platform Menu              " << endl;
+
+                cout << "\e[0;33mMacintosh, Playstation(1, 2,3,4, Vita)" << endl;
+                cout <<          "Xbox(One, 360), iPhone, Nintendo(3DS), PC" << endl;
+
+                cout << endl << endl;
 
             }
-            cout<< "Enter the desired platform: " <<endl;
+            cout<< "\e[0;37mEnter the desired platform: " <<endl;
             getline(cin, platform);
             int input = stoi(user_input);
             menuManager.get_top_N_games_by_platform(platform, input);
@@ -121,10 +128,10 @@ void  Menu::run_menu() {
             menuManager.get_top_N_games_by_rank(rating, input);
         }
         else if (choice == 6) {
-            cout << "\e[0;37mExiting the program. Goodbye!" << endl;
+            cout << "\e[1;96mThanks for playing!" << endl;
             break;
         } else {
-            cout << "Invalid choice. Please try again." << endl;
+            cout << "\e[0;37mInvalid choice. Please try again." << endl;
         }
     }
 }}
