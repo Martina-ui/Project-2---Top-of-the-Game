@@ -1,8 +1,9 @@
-#include "data_src/Game.h"   //Bridges Game class (from Martina)
-#include "Games.h"           //local Games class
+#include "data_src/Game.h"   // Bridges Game class
+#include "Games.h"           // local Games class
 #include <vector>
 #include <string>
 #include <iostream>
+
 using bridges::dataset::Game;
 using namespace std;
 
@@ -23,13 +24,7 @@ public:
     int size() const;
     Games extractMax();
 
-    //heap game functions
-    // vector<Games> convertBridgesToLocal(const vector<Game>& bridgeList);
-    // void runHeapTopNOnDataset(const vector<Game>& bridgeList, int N);
-    // vector<Games> getTopN_Heap(const vector<Games>& allGames, int N);
-    // void printGame(const Games& g);
-
-    //using games data NOT bridges
+    // Heap helpers that operate on local Games vectors
     void printHeapTopNOnDataset(const vector<Games>& gamesdata, int N);
     vector<Games> getTopN_Heap(const vector<Games>& allGames, int N);
     void printGame(const Games& g);
