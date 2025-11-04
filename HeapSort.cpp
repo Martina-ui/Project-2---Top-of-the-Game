@@ -85,31 +85,32 @@ Games HeapSort::extractMax() {
 }
 
     //heap game functions
-vector<Games> HeapSort::convertBridgesToLocal(const vector<Game>& bridgeList) {
-    vector<Games> result;
-    result.reserve(bridgeList.size());
+// vector<Games> HeapSort::convertBridgesToLocal(const vector<Game>& bridgeList) {
+//     vector<Games> result;
+//     result.reserve(bridgeList.size());
 
-    for (const auto& g : bridgeList) {
-        // pull info from Bridges' Game
-        string title        = g.getTitle();
-        string platform     = g.getPlatformType();
-        vector<string> genres = g.getGameGenre();
-        float rating        = g.getRating();
+//     for (const auto& g : bridgeList) {
+//         // pull info from Bridges' Game
+//         string title        = g.getTitle();
+//         string platform     = g.getPlatformType();
+//         vector<string> genres = g.getGameGenre();
+//         float rating        = g.getRating();
 
-        // build our local Games object
-        Games local(title, platform, genres, rating);
-        result.push_back(local);
-    }
+//         // build our local Games object
+//         Games local(title, platform, genres, rating);
+//         result.push_back(local);
+//     }
 
-    return result;
-}
+//     return result;
+// }
 
-void HeapSort::runHeapTopNOnDataset(const vector<Game>& bridgeList, int N) {
-    vector<Games> localList = convertBridgesToLocal(bridgeList);
+void HeapSort::runHeapTopNOnDataset(const vector<Games>& gamesdata, int N) {
+    // vector<Games> localList = convertBridgesToLocal(bridgeList);
+    vector<Games> localList = gamesdata;
 
     vector<Games> topN = getTopN_Heap(localList, N);
 
-    std::cout << "\n===== Top " << N << " Games by Rating (Heap) =====\n";
+    cout << "\n===== Top " << N << " Games by Rating (Heap) =====\n";
     for (const auto& g : topN) {
         printGame(g);
     }
@@ -122,8 +123,7 @@ vector<Games> HeapSort::getTopN_Heap(const vector<Games> &allGames, int N) {
     auto startBuild = chrono::high_resolution_clock::now();
     HeapSort heap(allGames);
     auto endBuild = chrono::high_resolution_clock::now();
-
-    auto startExtract = chrono::high_resolution_clock::now();
+    auto startExtract = std::chrono::high_resolution_clock::now();
     vector<Games> result;
     result.reserve(N);
 
@@ -141,13 +141,13 @@ vector<Games> HeapSort::getTopN_Heap(const vector<Games> &allGames, int N) {
     size_t bytesPerGame = sizeof(Games);
     size_t totalBytes = numGames * bytesPerGame;
 
-    std::cout << "[Heap] Built heap with " << numGames << " games in "
+    cout << "[Heap] Built heap with " << numGames << " games in "
               << buildMicros << " microseconds.\n";
 
-    std::cout << "[Heap] Extracted top " << result.size() << " in "
+    cout << "[Heap] Extracted top " << result.size() << " in "
               << extractMicros << " microseconds.\n";
 
-    std::cout << "[Heap] Approx memory for heap array: "
+    cout << "[Heap] Approx memory for heap array: "
               << totalBytes << " bytes ("
               << bytesPerGame << " bytes * "
               << numGames << " items)\n";

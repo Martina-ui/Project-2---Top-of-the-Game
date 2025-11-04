@@ -8,6 +8,7 @@ using namespace std;
 void  Menu::run_menu() {
    int choice;
    MenuManager menuManager;
+   HeapSort Maxheap;
     while (true) {
         cout << " __________________________________"<< endl;
         cout << "|           Main Menu              |" << endl;
@@ -78,14 +79,13 @@ void  Menu::run_menu() {
          }
          if (choice == 5) {
             cout << "Top 10 Games (Heap Sort)" << endl;
-
-            menuManager.get_top_N_games_mergeSort(10);
+            Maxheap.runHeapTopNOnDataset(menuManager.get_games_data(), 10);
         }
         else if (choice == 6){
             cout << "Enter the number of games you'd like to show: " << endl;
             getline(cin, user_input);
             int input = stoi(user_input);
-            menuManager.get_top_N_games_mergeSort(input);
+            Maxheap.getTopN_Heap(menuManager.get_games_data(), input);
         }
         else if (choice == 7) {
             //display top N games by genre
@@ -99,7 +99,7 @@ void  Menu::run_menu() {
             cout << "Enter the desired genre: " << endl;
             getline(cin, genre);
             int input = stoi(user_input);
-            menuManager.get_top_N_games_by_genre_mergeSort(genre, input);
+            //insert heap function for finding by genre here
         }
         else if (choice == 8) {
             //display top N games by platform
@@ -112,7 +112,7 @@ void  Menu::run_menu() {
             cout << "Enter the desired platform: " << endl;
             getline(cin, platform);
             int input = stoi(user_input);
-            menuManager.get_top_N_games_by_platform_mergeSort(platform, input);
+            //insert heap function for finding by platform here
          }
         else if (choice == 9) {
             cout << "Exiting the program. Goodbye!" << endl;
