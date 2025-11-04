@@ -122,4 +122,33 @@ cout << endl;
 	cout << "Merge Sort: " << duration.count() << " microseconds" << endl;
 }
 
+void MenuManager::get_top_N_games_by_rank(const float& rank, int n){
 
+	vector<Games> games = get_games_data();
+	vector<Games> updated_games;
+	for (int i = 0; i < games.size(); i++) {
+		if(rank == games[i].get_rating()) {
+			updated_games.push_back(games[i]);
+		}
+	}
+	auto start = chrono::high_resolution_clock::now();
+	mergeSort(updated_games, 0, updated_games.size() - 1);
+	auto end = chrono::high_resolution_clock::now();
+	auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+	for (int i = 0; i < n; i++) {
+		//cout << games[i].get_title() << endl;
+         int temp = i+1;
+        cout << "Game " << temp << endl;
+	    cout << "\tTitle: " << updated_games[i].get_title() << endl
+		<< "\tPlatform Type: " << updated_games[i].get_platform_type() << endl
+		<< "\tRating: " << updated_games[i].get_rating() << endl <<
+		"\tGenres: ";
+         for(int j =0; j < updated_games[i].get_genre().size(); j++){
+           cout << updated_games[i].get_genre()[j] << " " ;
+         };
+    cout << endl;
+
+	}
+       // cout <<
+	cout << "Merge Sort: " << duration.count() << " microseconds" << endl;
+}
