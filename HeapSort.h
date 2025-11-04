@@ -30,7 +30,7 @@ public:
     // void printGame(const Games& g);
 
     //using games data NOT bridges
-    void runHeapTopNOnDataset(const vector<Games>& gamesdata, int N);
+    void printHeapTopNOnDataset(const vector<Games>& gamesdata, int N);
     vector<Games> getTopN_Heap(const vector<Games>& allGames, int N);
     void printGame(const Games& g);
 };

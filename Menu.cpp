@@ -25,7 +25,7 @@ void  Menu::run_menu() {
         cout << "|  7. Show Top N Games by Genre    |" << endl;
         cout << "|  8. Show Top N Games by Platform |" << endl;
         cout << "|            9. Exit               |" << endl;
-        cout << " ---------------------------------- "<< endl;
+        cout << " ---------------------------------- " << endl;
         cout << endl;
         cout << "Enter your choice: ";
 
@@ -79,13 +79,13 @@ void  Menu::run_menu() {
          }
          if (choice == 5) {
             cout << "Top 10 Games (Heap Sort)" << endl;
-            Maxheap.runHeapTopNOnDataset(menuManager.get_games_data(), 10);
+            Maxheap.printHeapTopNOnDataset(menuManager.get_games_data(), 10);
         }
         else if (choice == 6){
             cout << "Enter the number of games you'd like to show: " << endl;
             getline(cin, user_input);
             int input = stoi(user_input);
-            Maxheap.getTopN_Heap(menuManager.get_games_data(), input);
+            Maxheap.printHeapTopNOnDataset(menuManager.get_games_data(), input);
         }
         else if (choice == 7) {
             //display top N games by genre

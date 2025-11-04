@@ -104,7 +104,7 @@ Games HeapSort::extractMax() {
 //     return result;
 // }
 
-void HeapSort::runHeapTopNOnDataset(const vector<Games>& gamesdata, int N) {
+void HeapSort::printHeapTopNOnDataset(const vector<Games>& gamesdata, int N) {
     // vector<Games> localList = convertBridgesToLocal(bridgeList);
     vector<Games> localList = gamesdata;
 
