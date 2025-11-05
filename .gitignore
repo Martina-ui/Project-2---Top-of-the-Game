@@ -1,31 +1,17 @@
-# Compiled binaries
-game_program
+build/
+cmake-build-debug/
 *.o
 *.out
-
-# Dependencies (downloaded libraries)
-rapidjson/
-Bridges.h
-DataSource.h
-BSTElement.h
-data_src/
-*.h
-*.cpp
-!main.cpp
-!Games.h
-!HeapSort.cpp
-!Menu.cpp
-!mergeSort.cpp
-!mergeSort.h
-!Menu.h
-!MenuManager.cpp
-!MenuManager.h
-
-# Build artifacts
 *.a
 *.so
+read_ign
+game_program
 
-# IDE files
 .vscode/
 .idea/
+.ccls-cache/
+.run/
 *.swp
+.DS_Store
+
+*.log
