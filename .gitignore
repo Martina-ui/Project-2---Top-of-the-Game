@@ -6,12 +6,10 @@ cmake-build-debug/
 *.so
 read_ign
 game_program
-
 .vscode/
-.idea/
-.ccls-cache/
-.run/
-*.swp
-.DS_Store
-
-*.log
+ .idea/
+ .ccls-cache/
+ .run/
+ .DS_Store
+ *.swp
+ *.log
