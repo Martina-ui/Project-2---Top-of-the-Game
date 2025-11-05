@@ -63,7 +63,6 @@ void  Menu::run_menu() {
 
         choice =stoi(user_choice);
 
-        //once we finish the functions we will call them here based on user choice
         if (choice == 1) {
             cout << "\e[0;37mTop 10 Games" << endl;
 
