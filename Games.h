@@ -50,10 +50,3 @@ class Games {
 };
 
 
-std::vector<Games> convertBridgesToLocal(const std::vector<Game>& bridgeList);
-
-void runHeapTopNOnDataset(const std::vector<Game>& bridgeList, int N);
-
-std::vector<Games> getTopN_Heap(const std::vector<Games>& allGames, int N);
-
-void printGame(const Games& g);

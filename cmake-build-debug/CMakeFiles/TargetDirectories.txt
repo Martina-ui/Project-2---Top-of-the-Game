@@ -1,4 +1,0 @@
-/Users/yusrahash/Documents/GitHub/Project-2---Top-of-the-Game /Project-2/cmake-build-debug/CMakeFiles/main.dir
-/Users/yusrahash/Documents/GitHub/Project-2---Top-of-the-Game /Project-2/cmake-build-debug/CMakeFiles/read_ign.dir
-/Users/yusrahash/Documents/GitHub/Project-2---Top-of-the-Game /Project-2/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/yusrahash/Documents/GitHub/Project-2---Top-of-the-Game /Project-2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

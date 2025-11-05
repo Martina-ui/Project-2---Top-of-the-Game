@@ -17,7 +17,6 @@ file(GLOB BRIDGES_SRCS "${BRIDGES_SRC_DIR}/*.cpp" "${BRIDGES_SRC_DIR}/data_src/*
 set(SOURCES
         main.cpp
         HeapSort.cpp
-        heap_test.cpp
         Menu.cpp
         MenuManager.cpp
         mergeSort.cpp
