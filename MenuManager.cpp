@@ -1,14 +1,15 @@
 #include "MenuManager.h"
-#include <iostream>
-#include <string>
-#include <vector>
 #include "Bridges.h"
 #include "DataSource.h"
 #include "data_src/Game.h"
+// #include "mergeSort.h"
+#include <iostream>
+#include <string>
+#include <vector>
 #include <stdlib.h>
 #include <queue>
-#include "mergeSort.h"
-#include<chrono>
+#include <chrono>
+#include <algorithm>
 using namespace std;
 using namespace bridges;
 
@@ -32,6 +33,68 @@ vector<Games> MenuManager::get_games_data() {
 	return games_info; 
 }
 
+//merge sort functions from mergeSort.h moved here
+void merge(vector<Games>& data, int left, int mid, int right){
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    // Create temp vectors
+    vector<Games> L(n1), R(n2);
+
+    // Copy data to temp vectors L[] and R[]
+    for (int i = 0; i < n1; i++)
+        L[i] = data[left + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = data[mid + 1 + j];
+
+    int i = 0, j = 0;
+    int k = left;
+
+    // Merge the temp vectors back
+    // into arr[left..right]
+    while (i < n1 && j < n2) {
+        if (L[i].get_rating() >= R[j].get_rating()) {
+            data[k] = L[i];
+            i++;
+        }
+        else {
+            data[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy the remaining elements of L[],
+    // if there are any
+    while (i < n1) {
+        data[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[],
+    // if there are any
+    while (j < n2) {
+        data[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+// begin is for left index and end is right index
+// of the sub-array of arr to be sorted
+void mergeSort(vector<Games>& data, int left, int right){
+
+    if (left >= right)
+        return;
+
+    int mid = left + (right - left) / 2;
+    mergeSort(data, left, mid);
+    mergeSort(data, mid + 1, right);
+    merge(data, left, mid, right);
+    cout << endl;
+
+}
 
 void MenuManager::get_top_N_games_mergeSort(int n) {
 	auto start = chrono::high_resolution_clock::now();
@@ -42,7 +105,6 @@ void MenuManager::get_top_N_games_mergeSort(int n) {
 
 
 	for (int i = 0; i < n; i++) {
-		//cout << games[i].get_title() << endl;
         cout << "Game " << i+1 << endl;
 	    cout << "\tTitle: " << games[i].get_title() << endl
 		<< "\tPlatform Type: " << games[i].get_platform_type() << endl
@@ -141,7 +203,6 @@ void MenuManager::get_top_N_games_by_rank_mergeSort(const float& rank, int n){
 	auto end = chrono::high_resolution_clock::now();
 	auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
 	for (int i = 0; i < n; i++) {
-		//cout << games[i].get_title() << endl;
          int temp = i+1;
         cout << "Game " << temp << endl;
 	    cout << "\tTitle: " << updated_games[i].get_title() << endl
@@ -158,6 +219,8 @@ void MenuManager::get_top_N_games_by_rank_mergeSort(const float& rank, int n){
 	cout << "\e[1;37mMerge Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
     cout << endl << endl << endl;
 }
+
+
 
 //heap methods from HeapSort.h moved here
 static bool mm_isBetter(const Games &a, const Games &b) {
@@ -200,7 +263,6 @@ void MenuManager::heapifyDown(int index) {
     }
 }
 
-// build heap from provided items
 void MenuManager::HeapSort(const vector<Games> &items) {
     heap = items;
     for (int i = (int)heap.size() / 2; i >= 0; --i) {
@@ -236,14 +298,25 @@ Games MenuManager::extractMax() {
 }
 
 void MenuManager::printHeapTopNOnDataset(const vector<Games>& gamesdata, int N) {
-    vector<Games> localList = gamesdata;
-    vector<Games> topN = getTopN_Heap(localList, N);
+    vector<Games> topN = getTopN_Heap(gamesdata, N);
 
-    cout << "\n===== Top " << N << " Games by Rating (Heap) =====\n";
-    for (const auto& g : topN) {
-        printGame(g);
-    }
-    std::cout << "=============================================\n";
+    //cout << "\n===== Top " << N << " Games by Rating (Heap) =====\n";
+    // for (const auto& g : topN) {
+    //     printGame(g);
+    // }
+    for (int i = 0; i < N; i++) {
+        cout << "Game " << i+1 << endl;
+	    cout << "\tTitle: " << gamesdata[i].get_title() << endl
+		<< "\tPlatform Type: " << gamesdata[i].get_platform_type() << endl
+		<< "\tRating: " << gamesdata[i].get_rating() << endl <<
+		"\tGenres: ";
+         for(int j =0; j < gamesdata[i].get_genre().size(); j++){
+           cout << gamesdata[i].get_genre()[j] << " " ;
+         };
+         cout << endl << endl;
+
+	}
+    //std::cout << "=============================================\n";
 }
 
 vector<Games> MenuManager::getTopN_Heap(const vector<Games> &allGames, int N) {
@@ -283,16 +356,16 @@ vector<Games> MenuManager::getTopN_Heap(const vector<Games> &allGames, int N) {
     return result;
 }
 
-void MenuManager::printGame(const Games &g) {
-    cout << "Title: " << g.get_title()
-         << " | Platform: " << g.get_platform_type()
-         << " | Rating: " << g.get_rating()
-         << " | Genres: ";
+// void MenuManager::printGame(const Games &g) {
+//     cout << "Title: " << g.get_title()
+//          << " | Platform: " << g.get_platform_type()
+//          << " | Rating: " << g.get_rating()
+//          << " | Genres: ";
 
-    vector<string> gs = g.get_genre();
-    for (size_t i = 0; i < gs.size(); i++) {
-        cout << gs[i];
-        if (i + 1 < gs.size()) cout << ", ";
-    }
-    cout << "\n";
-}
+//     vector<string> gs = g.get_genre();
+//     for (size_t i = 0; i < gs.size(); i++) {
+//         cout << gs[i];
+//         if (i + 1 < gs.size()) cout << ", ";
+//     }
+//     cout << "\n";
+// }

@@ -37,5 +37,5 @@ public:
     Games extractMax();
     void printHeapTopNOnDataset(const vector<Games>& gamesdata, int N);
     vector<Games> getTopN_Heap(const vector<Games>& allGames, int N);
-    void printGame(const Games& g);
+    //void printGame(const Games& g);
 };
