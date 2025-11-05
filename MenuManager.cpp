@@ -14,7 +14,7 @@ using namespace bridges;
 
 //i believe this should get the data we need for each game
 vector<Games> MenuManager::get_games_data() {
-    char* mySecretUser = getenv("SECRET_HOLDING_USER_ID"); 
+    char* mySecretUser = getenv("SECRET_HOLDING_USER_ID");
 	char* mySecretAPI = getenv("SECRET_HOLDING_API_KEY");
 
 	Bridges bridges(1, mySecretUser, mySecretAPI);
@@ -30,11 +30,11 @@ vector<Games> MenuManager::get_games_data() {
 		game.set_rating(static_cast<float>(g.getRating()));
 		games_info.push_back(game);
 	}
-	return games_info; 
+	return games_info;
 }
 
 
-void MenuManager::get_top_N_games(int n) {
+void MenuManager::Mget_top_N_games(int n) {
 	auto start = chrono::high_resolution_clock::now();
 	vector<Games> games = get_games_data();
 	mergeSort(games, 0, games.size() - 1);
@@ -61,7 +61,7 @@ void MenuManager::get_top_N_games(int n) {
 }
 
 
-void MenuManager::get_top_N_games_by_genre(const string& genre, int n) {
+void MenuManager::Mget_top_N_games_by_genre(const string& genre, int n) {
 	vector<Games> games = get_games_data();
 	vector<Games> updated_games;
 	for (int i = 0; i < games.size(); i++) {
@@ -96,7 +96,7 @@ cout << endl;
 }
 
 //merge sort
-void MenuManager::get_top_N_games_by_platform(const string& platform, int n) {
+void MenuManager::Mget_top_N_games_by_platform(const string& platform, int n) {
 
 	vector<Games> games = get_games_data();
 	vector<Games> updated_games;
@@ -128,7 +128,7 @@ cout << endl;
     cout << endl << endl << endl;
 }
 
-void MenuManager::get_top_N_games_by_rank(const float& rank, int n){
+void MenuManager::Mget_top_N_games_by_rank(const float& rank, int n){
 
 	vector<Games> games = get_games_data();
 	vector<Games> updated_games;

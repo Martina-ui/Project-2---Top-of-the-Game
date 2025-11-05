@@ -1,7 +1,7 @@
 #include "Menu.h"
 #include "Game.h"
 #include "MenuManager.h"
-#include "mergeSort.h"
+//#include "mergeSort.h"
 #include <sstream>
 #include <iostream>
 using namespace std;
@@ -67,13 +67,13 @@ void  Menu::run_menu() {
         if (choice == 1) {
             cout << "\e[0;37mTop 10 Games" << endl;
 
-            menuManager.get_top_N_games(10);
+            menuManager.Mget_top_N_games(10);
         }
         else if (choice == 2){
             cout<< "\e[0;37mEnter the number of games you'd like to show: " <<endl;
             getline(cin, user_input);
             int input = stoi(user_input);
-            menuManager.get_top_N_games(input);
+            menuManager.Mget_top_N_games(input);
         }
         else if (choice == 3) {
             //display top N games by genre
@@ -94,7 +94,7 @@ void  Menu::run_menu() {
             cout<< "\e[0;37mEnter the desired genre: " <<endl;
             getline(cin, genre);
             int input = stoi(user_input);
-            menuManager.get_top_N_games_by_genre(genre, input);
+            menuManager.Mget_top_N_games_by_genre(genre, input);
         }
         else if (choice == 4) {
             //display top N games by platform
@@ -116,7 +116,7 @@ void  Menu::run_menu() {
             cout<< "\e[0;37mEnter the desired platform: " <<endl;
             getline(cin, platform);
             int input = stoi(user_input);
-            menuManager.get_top_N_games_by_platform(platform, input);
+            menuManager.Mget_top_N_games_by_platform(platform, input);
          }
         else if (choice == 5) {
             cout<< "\e[0;37mEnter the number of games you'd like to show: " <<endl;
@@ -125,7 +125,7 @@ void  Menu::run_menu() {
             getline(cin, rank);
             int input = stoi(user_input);
             float rating =  stof(rank);
-            menuManager.get_top_N_games_by_rank(rating, input);
+            menuManager.Mget_top_N_games_by_rank(rating, input);
         }
         else if (choice == 6) {
             cout << "\e[1;96mThanks for playing!" << endl;

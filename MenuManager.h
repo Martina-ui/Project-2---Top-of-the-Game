@@ -12,9 +12,9 @@ class MenuManager {
 		//void merge(vector<Games>& games, int left, int mid, int right);
 	public:
 		vector<Games> get_games_data();
-		void get_top_N_games(int n);
-		void get_top_N_games_by_genre(const string& genre, int n); //heap
-		void  get_top_N_games_by_platform(const string& platform, int n); //merge sort
-        void  get_top_N_games_by_rank(const float& rank, int n);
-		//void compare_sort_performance(int n);
+		void Mget_top_N_games(int n);
+		void Mget_top_N_games_by_genre(const string& genre, int n); //heap
+		void  Mget_top_N_games_by_platform(const string& platform, int n); //merge sort
+        void  Mget_top_N_games_by_rank(const float& rank, int n);
+
 };
