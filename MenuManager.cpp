@@ -320,11 +320,10 @@ void MenuManager::printHeapTopNOnDataset(const vector<Games>& gamesdata, int N) 
 }
 
 vector<Games> MenuManager::getTopN_Heap(const vector<Games> &allGames, int N) {
-    auto startBuild = chrono::high_resolution_clock::now();
-    HeapSort(allGames);
-    auto endBuild = chrono::high_resolution_clock::now();
+    auto start = chrono::high_resolution_clock::now();
 
-    auto startExtract = std::chrono::high_resolution_clock::now();
+    HeapSort(allGames);
+
     vector<Games> result;
     result.reserve(N);
 
@@ -333,25 +332,16 @@ vector<Games> MenuManager::getTopN_Heap(const vector<Games> &allGames, int N) {
         result.push_back(g);
     }
 
-    auto endExtract = chrono::high_resolution_clock::now();
-
-    auto buildMicros = chrono::duration_cast<chrono::microseconds>(endBuild - startBuild).count();
-    auto extractMicros = chrono::duration_cast<chrono::microseconds>(endExtract - startExtract).count();
+    auto end = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
 
     size_t numGames = allGames.size();
     size_t bytesPerGame = sizeof(Games);
     size_t totalBytes = numGames * bytesPerGame;
 
-    cout << "[Heap] Built heap with " << numGames << " games in "
-              << buildMicros << " microseconds.\n";
-
-    cout << "[Heap] Extracted top " << result.size() << " in "
-              << extractMicros << " microseconds.\n";
-
-    cout << "[Heap] Approx memory for heap array: "
-              << totalBytes << " bytes ("
-              << bytesPerGame << " bytes * "
-              << numGames << " items)\n";
+    cout<< "\e[1;36m-----------------------------------------" << endl;
+	cout << "\e[1;37mHeap Sort" << "\e[0;37m : " << duration << " microseconds" << endl;
+    cout << endl << endl << endl;
 
     return result;
 }
