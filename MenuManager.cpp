@@ -49,8 +49,8 @@ void MenuManager::Mget_top_N_games(int n) {
 
 	for (int i = 0; i < n; i++) {
 		//cout << games[i].get_title() << endl;
-        cout << "Game " << i+1 << endl;
-	    cout << "\tTitle: " << games[i].get_title() << endl
+        cout << "\e[1;32mGame " << i+1 << endl;
+	    cout << "\e[1;32m\tTitle: " << games[i].get_title() << endl
 		<< "\tPlatform Type: " << games[i].get_platform_type() << endl
 		<< "\tRating: " << games[i].get_rating() << endl <<
 		"\tGenres: ";
@@ -85,8 +85,8 @@ void MenuManager::Mget_top_N_games_by_genre(const string& genre, int n) {
 	for (int i = 0; i < n; i++) {
 		//cout << games[i].get_title() << endl;
                 int temp = i+1;
-        cout << "Game " << temp << endl;
-	    cout << "\tTitle: " << updated_games[i].get_title() << endl
+        cout << "\e[1;32mGame " << temp << endl;
+	    cout << "\e[1;32m\tTitle: " << updated_games[i].get_title() << endl
 		<< "\tPlatform Type: " << updated_games[i].get_platform_type() << endl
 		<< "\tRating: " << updated_games[i].get_rating() << endl <<
 		"\tGenres: ";
@@ -120,8 +120,8 @@ void MenuManager::Mget_top_N_games_by_platform(const string& platform, int n) {
 	for (int i = 0; i < n; i++) {
 		//cout << games[i].get_title() << endl;
          int temp = i+1;
-        cout << "Game " << temp << endl;
-	    cout << "\tTitle: " << updated_games[i].get_title() << endl
+        cout << "\e[1;32mGame " << temp << endl;
+	    cout << "\e[1;32m\tTitle: " << updated_games[i].get_title() << endl
 		<< "\tPlatform Type: " << updated_games[i].get_platform_type() << endl
 		<< "\tRating: " << updated_games[i].get_rating() << endl <<
 		"\tGenres: ";
@@ -154,8 +154,8 @@ void MenuManager::Mget_top_N_games_by_rank(const float& rank, int n){
 	for (int i = 0; i < n; i++) {
 		//cout << games[i].get_title() << endl;
          int temp = i+1;
-        cout << "Game " << temp << endl;
-	    cout << "\tTitle: " << updated_games[i].get_title() << endl
+        cout << "\e[1;32mGame " << temp << endl;
+	    cout << "\e[0;32m\tTitle: " << updated_games[i].get_title() << endl
 		<< "\tPlatform Type: " << updated_games[i].get_platform_type() << endl
 		<< "\tRating: " << updated_games[i].get_rating() << endl <<
 		"\tGenres: ";

@@ -11,12 +11,20 @@ void  Menu::run_menu() {
    MenuManager menuManager;
        string yn;
        cout << endl << endl;
-       cout << "\e[1;97m           W E L C O M E             "<< endl;
-       cout << "                 t o                  "<< endl;
-       cout << "\e[3m         T O P  OF  THE  GAME         \e[0m"<< endl;
+       cout << "\e[0;36m ---------------------------------------" << endl;
+       cout<< "\e[0;36m|";
+       cout << "\e[1;97m           W E L C O M E               ";
+    cout<< "\e[0;36m|" << endl;
+    cout<< "\e[0;36m|";
+       cout << "\e[0;97m                  t o                  ";
+    cout<< "\e[0;36m|" << endl;
+    cout<< "\e[0;36m|";
+       cout << "\e[1;31m         T O P  OF  THE  GAME          ";
+    cout<< "\e[0;36m|" << endl;
+    cout << "\e[0;36m ---------------------------------------" << endl;
        cout << endl;
-       cout << "are you ready?" << endl;
-       cout << "\033[32mpress y to continue" << endl;
+       cout << "\033[32m           are you ready?" << endl;
+       cout << "\033[32m          press y to continue" << endl;
     getline(cin, yn);
     istringstream inStream(yn);
     if(yn == "y") {
@@ -24,32 +32,32 @@ void  Menu::run_menu() {
 
     while (true) {
 
-        cout << "\e[1;93m __________________________________" << endl;
-        cout << "\e[1;93m|";
+        cout << "\e[1;36m __________________________________" << endl;
+        cout << "\e[1;36m|";
         cout << "\e[0;93m\e[4m	      Main Menu            \e[0m";
-        cout << "\e[1;93m|" << endl;
+        cout << "\e[1;36m|" << endl;
 
-        cout << "\e[1;93m|";
+        cout << "\e[1;36m|";
          cout<<       "\e[0;37m      1. Show Top 10 Games        ";
-          cout <<  "\e[1;93m|" << endl;
-        cout << "\e[1;93m|";
+          cout <<  "\e[1;36m|" << endl;
+        cout << "\e[1;36m|";
            cout<<          "\e[0;37m      2. Show Top N Games         ";
-          cout <<  "\e[1;93m|" << endl;
-        cout << "\e[1;93m|";
+          cout <<  "\e[1;36m|" << endl;
+        cout << "\e[1;36m|";
           cout<<        "\e[0;37m  3. Show Top N Games by Genre    ";
-            cout << "\e[1;93m|" << endl;
-        cout << "\e[1;93m|";
+            cout << "\e[1;36m|" << endl;
+        cout << "\e[1;36m|";
               cout <<      "\e[0;37m  4. Show Top N Games by Platform ";
-            cout << "\e[1;93m|" << endl;
-        cout << "\e[1;93m|";
+            cout << "\e[1;36m|" << endl;
+        cout << "\e[1;36m|";
             cout<<        "\e[0;37m     5. Show N Games of rank R    ";
-            cout << "\e[1;93m|" << endl;
-        cout << "\e[1;93m|";
+            cout << "\e[1;36m|" << endl;
+        cout << "\e[1;36m|";
                     cout<< "\e[0;37m            6. Exit               ";
-              cout <<"\e[1;93m|" << endl;
-        cout << "\e[1;93m ---------------------------------- "<< endl;
+              cout <<"\e[0;36m|" << endl;
+        cout << "\e[1;36m ---------------------------------- "<< endl;
         cout << endl;
-        cout << "\e[0;32mEnter your choice: ";
+        cout << "\e[0;31mEnter your choice: ";
         cout << endl << endl;
 
         string user_choice;
@@ -65,22 +73,22 @@ void  Menu::run_menu() {
 
         //once we finish the functions we will call them here based on user choice
         if (choice == 1) {
-            cout << "\e[0;37mTop 10 Games" << endl;
+            cout << "\e[1;32mTop 10 Games" << endl;
 
             menuManager.Mget_top_N_games(10);
         }
         else if (choice == 2){
-            cout<< "\e[0;37mEnter the number of games you'd like to show: " <<endl;
+            cout<< "\e[1;33mEnter the number of games you'd like to show: " <<endl;
             getline(cin, user_input);
             int input = stoi(user_input);
             menuManager.Mget_top_N_games(input);
         }
         else if (choice == 3) {
             //display top N games by genre
-            cout<< "\e[0;37mEnter the number of games you'd like to show: " <<endl;
+            cout<< "\e[1;33mEnter the number of games you'd like to show: " <<endl;
             getline(cin, user_input);
-            cout<< "Would you like to see the top genres?" << endl;
-            cout << "press y for yes or n for no" << endl;
+            cout<< "\e[0;97mWould you like to see the top genres?" << endl;
+            cout << "\e[0;97mpress y for yes or n for no" << endl;
             getline(cin, yn);
             if (yn == "y") {
                 cout << "\e[4;33m              Genre Menu             " << endl;
@@ -91,7 +99,7 @@ void  Menu::run_menu() {
                 cout << endl << endl;
 
             }
-            cout<< "\e[0;37mEnter the desired genre: " <<endl;
+            cout<< "\e[0;97mEnter the desired genre: " <<endl;
             getline(cin, genre);
             int input = stoi(user_input);
             menuManager.Mget_top_N_games_by_genre(genre, input);
@@ -99,7 +107,7 @@ void  Menu::run_menu() {
         else if (choice == 4) {
             //display top N games by platform
 
-            cout<< "\e[0;37mEnter the number of games you'd like to show: " <<endl;
+            cout<< "\e[0;97mEnter the number of games you'd like to show: " <<endl;
             getline(cin, user_input);
             cout<< "Would you like to see the top platforms?" << endl;
             cout << "press y for yes or n for no" << endl;
@@ -113,13 +121,13 @@ void  Menu::run_menu() {
                 cout << endl << endl;
 
             }
-            cout<< "\e[0;37mEnter the desired platform: " <<endl;
+            cout<< "\e[0;97mEnter the desired platform: " <<endl;
             getline(cin, platform);
             int input = stoi(user_input);
             menuManager.Mget_top_N_games_by_platform(platform, input);
          }
         else if (choice == 5) {
-            cout<< "\e[0;37mEnter the number of games you'd like to show: " <<endl;
+            cout<< "\e[0;97mEnter the number of games you'd like to show: " <<endl;
             getline(cin, user_input);
             cout<< "Enter the desired ranking: " <<endl;
             getline(cin, rank);
