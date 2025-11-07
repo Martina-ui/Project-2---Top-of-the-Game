@@ -56,7 +56,7 @@ MaxHeap::MaxHeap(){}
 
 //gives context in how to compare games
     bool MaxHeap::isBetter(const Games &a, const Games &b) {
-        return a.get_rating() > b.get_rating();
+        return a.get_rating() < b.get_rating();
     }
 
 
@@ -104,9 +104,9 @@ void MaxHeap::heapify(vector<Games>& games, int n, int i){
     int largest = i;
     int l = 2 * i + 1;
     int r = 2 * i + 2;
-    if (l < n && games[l].get_rating() > games[largest].get_rating())
+    if (l < n && games[l].get_rating() < games[largest].get_rating())
         largest = l;
-    if (r < n && games[r].get_rating() > games[largest].get_rating())
+    if (r < n && games[r].get_rating() < games[largest].get_rating())
         largest = r;
     if (largest != i) {
         swap(games[i], games[largest]);
