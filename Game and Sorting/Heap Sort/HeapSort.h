@@ -17,9 +17,7 @@ private:
     int leftChild(int i) const;
     int rightChild(int i) const;
     int parent(int i) const;
-
     void heapifyUp(int index);
-
     void heapifyDown(int index);
 
 public:

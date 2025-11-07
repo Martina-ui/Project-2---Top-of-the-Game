@@ -15,6 +15,7 @@ int  MaxHeap::leftChild(int i) const  { return 2 * i + 1; }
 int  MaxHeap::rightChild(int i) const { return 2 * i + 2; }
 int  MaxHeap::parent(int i) const     { return (i - 1) / 2; }
 
+MaxHeap::MaxHeap(){}
 //restores heap by moving element in given index up until it is in the correct place
     void MaxHeap::heapifyUp(int index) {
         int i = index;
@@ -99,7 +100,7 @@ int  MaxHeap::parent(int i) const     { return (i - 1) / 2; }
     }
 
 //from geeks for geeks https://www.geeksforgeeks.org/dsa/heap-sort/
-void heapify(vector<Games>& games, int n, int i){
+void MaxHeap::heapify(vector<Games>& games, int n, int i){
     int largest = i;
     int l = 2 * i + 1;
     int r = 2 * i + 2;
@@ -114,7 +115,7 @@ void heapify(vector<Games>& games, int n, int i){
 }
 
 // Main function to do heap sort
-void heapSort(vector<Games>& games){
+void MaxHeap::heapSort(vector<Games>& games){
     int n = games.size();
     for (int i = n / 2 - 1; i >= 0; i--)
         heapify(games, n, i);
