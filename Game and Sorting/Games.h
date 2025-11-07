@@ -7,6 +7,8 @@
 using namespace std;
 using bridges::dataset::Game;
 
+
+//class for the games data
 class Games {
 	private:
 		string title;

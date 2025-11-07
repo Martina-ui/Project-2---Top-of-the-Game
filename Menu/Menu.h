@@ -1,5 +1,6 @@
 #include "MenuManager.h"
 
+//class to manage Menu
 class Menu {
 		MenuManager menuManager;
 	public:

@@ -1,15 +1,14 @@
 #pragma once
-#include "Games.h"
+#include "../Game and Sorting/Games.h"
 #include "data_src/Game.h"
 #include <vector>
 #include <string>
 using namespace std;
 
+//MenuManager class contains fucntions which give the output of the menu options
 class MenuManager {
 
 		vector<Games> game_list;
-		// void mergeSort(vector<Games>& games, int left, int right);
-		//void merge(vector<Games>& games, int left, int mid, int right);
 	public:
 		vector<Games> get_games_data();
 		void Mget_top_N_games(int n);

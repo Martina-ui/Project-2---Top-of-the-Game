@@ -9,13 +9,14 @@
 #include "data_src/Game.h"
 #include <stdlib.h>
 #include <queue>
-#include "mergeSort.h"
-#include "HeapSort.h"
+#include "../Game and Sorting/Merge Sort/mergeSort.h"
+#include "../Game and Sorting/Games.h"
+#include "../Game and Sorting/Heap Sort/HeapSort.h"
 #include<chrono>
 using namespace std;
 using namespace bridges;
 
-//i believe this should get the data we need for each game
+//gets all of the game data
 vector<Games> MenuManager::get_games_data() {
     char* mySecretUser = getenv("SECRET_HOLDING_USER_ID");
 	char* mySecretAPI = getenv("SECRET_HOLDING_API_KEY");
@@ -36,9 +37,9 @@ vector<Games> MenuManager::get_games_data() {
 	return games_info;
 }
 
+//MERGE SORT FUNCTIONS
 
-
-
+//prints the top N games via merge sort
 void MenuManager::Mget_top_N_games(int n) {
     vector<Games> games = get_games_data();
 	auto start = chrono::high_resolution_clock::now();
@@ -60,13 +61,14 @@ void MenuManager::Mget_top_N_games(int n) {
          cout << endl << endl;
 
 	}
-    cout<< "\e[1;36m-----------------------------------------" << endl;
+    cout<< "\e[1;36m----------------------------------------------" << endl;
 	cout << "\e[1;37mMerge Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
     Hget_top_N_games(n);
     cout << endl << endl << endl;
 }
 
-
+//prints the top N games by genre via merge sort
+//also diplays the time duration of the same task via heap sort
 void MenuManager::Mget_top_N_games_by_genre(const string& genre, int n) {
 	vector<Games> games = get_games_data();
 	vector<Games> updated_games;
@@ -96,14 +98,15 @@ void MenuManager::Mget_top_N_games_by_genre(const string& genre, int n) {
 
 cout << endl;
 	}
-     cout<< "\e[1;36m-----------------------------------------" << endl;
+     cout<< "\e[1;36m----------------------------------------------" << endl;
 	cout << "\e[1;37mMerge Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
     Hget_top_N_games_by_genre(genre, n);
 
     cout << endl << endl << endl;
 }
 
-//merge sort
+//prints the top N games by platform via merge sort
+//also diplays the time duration of the same task via heap sort
 void MenuManager::Mget_top_N_games_by_platform(const string& platform, int n) {
 
 	vector<Games> games = get_games_data();
@@ -118,7 +121,6 @@ void MenuManager::Mget_top_N_games_by_platform(const string& platform, int n) {
 	auto end = chrono::high_resolution_clock::now();
 	auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
 	for (int i = 0; i < n; i++) {
-		//cout << games[i].get_title() << endl;
          int temp = i+1;
         cout << "\e[1;32mGame " << temp << endl;
 	    cout << "\e[1;32m\tTitle: " << updated_games[i].get_title() << endl
@@ -131,15 +133,16 @@ void MenuManager::Mget_top_N_games_by_platform(const string& platform, int n) {
 cout << endl;
 
 	}
-	 cout<< "\e[1;36m-----------------------------------------" << endl;
+	 cout<< "\e[1;36m----------------------------------------------" << endl;
 	cout << "\e[1;37mMerge Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
     Hget_top_N_games_by_platform(platform, n);
 
     cout << endl << endl << endl;
 }
 
+//prints top N games by rank via merge sort
+//also diplays the time duration of the same task via heap sort
 void MenuManager::Mget_top_N_games_by_rank(const float& rank, int n){
-
 	vector<Games> games = get_games_data();
 	vector<Games> updated_games;
 	for (int i = 0; i < games.size(); i++) {
@@ -165,55 +168,30 @@ void MenuManager::Mget_top_N_games_by_rank(const float& rank, int n){
     cout << endl;
 
 	}
-    cout<< "\e[1;36m-----------------------------------------" << endl;
+    cout<< "\e[1;36m----------------------------------------------" << endl;
 	cout << "\e[1;37mMerge Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
     Hget_top_N_games_by_rank(rank, n);
 
     cout << endl << endl << endl;
 }
 
+//HEAP SORT FUNCTIONS
 
-
+//prints the duration of a heap sort for getting the top N games
   void MenuManager::Hget_top_N_games(int N){
    auto start = chrono::high_resolution_clock::now();
 	vector<Games> allGames = get_games_data();
-	MaxHeap heap(allGames);
+	MaxHeap heapSort(allGames);
 	auto end = chrono::high_resolution_clock::now();
 	auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-    /*
-    auto startBuild = std::chrono::high_resolution_clock::now();
-    MaxHeap heap(allGames);
-    auto endBuild = std::chrono::high_resolution_clock::now();
 
-    auto startExtract = std::chrono::high_resolution_clock::now();
-    vector<Games> result;
-    result.reserve(N);
-
-    for (int i = 0; i < N && !heap.empty(); i++) {
-        Games g = heap.extractMax();
-        result.push_back(g);
-    }
-
-    auto endExtract = std::chrono::high_resolution_clock::now();
-
-    auto buildMicros = std::chrono::duration_cast<std::chrono::microseconds>(endBuild - startBuild).count();
-    auto extractMicros = std::chrono::duration_cast<std::chrono::microseconds>(endExtract - startExtract).count();
-
-    size_t numGames = allGames.size();
-    size_t bytesPerGame = sizeof(Games);
-    size_t totalBytes = numGames * bytesPerGame;
-*/
-    cout<< "\e[1;36m-----------------------------------------" << endl;
+    cout<< "\e[1;36m----------------------------------------------" << endl;
 	cout << "\e[1;37mHeap Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
-         cout<< "\e[1;36m-----------------------------------------" << endl;
+         cout<< "\e[1;36m----------------------------------------------" << endl;
     cout << endl << endl << endl;
-/*
-    std::cout << "[Heap] Extracted top " << result.size() << " in "
-              << extractMicros << " microseconds.\n";
-
-    */
 }
 
+//prints the duration of a heap sort for getting the top N games by genre
  void MenuManager::Hget_top_N_games_by_genre(const string& genre, int n){
    vector<Games> allGames = get_games_data();
 	vector<Games> gamesOfGenre;
@@ -226,15 +204,17 @@ void MenuManager::Mget_top_N_games_by_rank(const float& rank, int n){
 		}
 	}
 	auto start = chrono::high_resolution_clock::now();
-	MaxHeap heap(gamesOfGenre);
+	MaxHeap heapSort(gamesOfGenre);
 	auto end = chrono::high_resolution_clock::now();
 	auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
 
-    cout<< "\e[1;36m-----------------------------------------" << endl;
+    cout<< "\e[1;36m----------------------------------------------" << endl;
 	cout << "\e[1;37mHeap Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
-         cout<< "\e[1;36m-----------------------------------------" << endl;
+         cout<< "\e[1;36m----------------------------------------------" << endl;
     cout << endl << endl << endl;
 }
+
+//prints the duration of a heap sort for getting the top N games by platform
  void MenuManager::Hget_top_N_games_by_platform(const string& platform, int n){
    vector<Games> allGames = get_games_data();
 	vector<Games> gamesOfPlatform;
@@ -244,17 +224,18 @@ void MenuManager::Mget_top_N_games_by_rank(const float& rank, int n){
 		}
 	}
 	auto start = chrono::high_resolution_clock::now();
-    MaxHeap heap(gamesOfPlatform);
+    MaxHeap heapSort(gamesOfPlatform);
 	auto end = chrono::high_resolution_clock::now();
 	auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
 
-    cout<< "\e[1;36m-----------------------------------------" << endl;
+    cout<< "\e[1;36m----------------------------------------------" << endl;
 	cout << "\e[1;37mHeap Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
-         cout<< "\e[1;36m-----------------------------------------" << endl;
+         cout<< "\e[1;36m----------------------------------------------" << endl;
     cout << endl << endl << endl;
 }
 
 
+//prints the duration of a heap sort for getting the top N games by rank
 void MenuManager::Hget_top_N_games_by_rank(const float& rank, int n){
 	vector<Games> allGames = get_games_data();
 	vector<Games> gamesOfRank;
@@ -264,11 +245,11 @@ void MenuManager::Hget_top_N_games_by_rank(const float& rank, int n){
 		}
 	}
 	auto start = chrono::high_resolution_clock::now();
-	MaxHeap heap(gamesOfRank);
+	MaxHeap heapSort(gamesOfRank);
 	auto end = chrono::high_resolution_clock::now();
 	auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-    cout<< "\e[1;36m-----------------------------------------" << endl;
+    cout<< "\e[1;36m----------------------------------------------" << endl;
 	cout << "\e[1;37mHeap Sort" << "\e[0;37m : " << duration.count() << " microseconds" << endl;
-         cout<< "\e[1;36m-----------------------------------------" << endl;
+         cout<< "\e[1;36m----------------------------------------------" << endl;
     cout << endl << endl << endl;
 }

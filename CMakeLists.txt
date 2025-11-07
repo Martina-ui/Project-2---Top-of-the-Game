@@ -15,11 +15,11 @@ file(GLOB BRIDGES_SRCS "${BRIDGES_SRC_DIR}/*.cpp" "${BRIDGES_SRC_DIR}/data_src/*
 
 # Your project files
 set(SOURCES
-        main.cpp
-        HeapSort.cpp
-        Menu.cpp
-        MenuManager.cpp
-        mergeSort.cpp
+        Menu/main.cpp
+        "Game and Sorting/Heap Sort/HeapSort.cpp"
+        Menu/Menu.cpp
+        Menu/MenuManager.cpp
+        "Game and Sorting/Merge Sort/mergeSort.cpp"
         ${BRIDGES_SRCS}
 )
 

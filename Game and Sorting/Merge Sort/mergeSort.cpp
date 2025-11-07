@@ -3,25 +3,18 @@
 //
 
 #include "mergeSort.h"
-#include "Games.h"
+#include "../Games.h"
 #include <iostream>
 #include<algorithm>
 #include <vector>
 using namespace std;
-//from geeksforgeeks, why
-// Merges two subarrays of arr[].
-// First subarray is arr[left..mid]
-// Second subarray is arr[mid+1..right]
+//from geeksforgeeks, https://www.geeksforgeeks.org/dsa/merge-sort/
 void merge(vector<Games>& data, int left,
                      int mid, int right){
 
     int n1 = mid - left + 1;
     int n2 = right - mid;
-
-    // Create temp vectors
     vector<Games> L(n1), R(n2);
-
-    // Copy data to temp vectors L[] and R[]
     for (int i = 0; i < n1; i++)
         L[i] = data[left + i];
     for (int j = 0; j < n2; j++)
@@ -29,9 +22,6 @@ void merge(vector<Games>& data, int left,
 
     int i = 0, j = 0;
     int k = left;
-
-    // Merge the temp vectors back
-    // into arr[left..right]
     while (i < n1 && j < n2) {
         if (L[i].get_rating() >= R[j].get_rating()) {
             data[k] = L[i];
@@ -43,17 +33,13 @@ void merge(vector<Games>& data, int left,
         }
         k++;
     }
-
-    // Copy the remaining elements of L[],
-    // if there are any
     while (i < n1) {
         data[k] = L[i];
         i++;
         k++;
     }
 
-    // Copy the remaining elements of R[],
-    // if there are any
+
     while (j < n2) {
         data[k] = R[j];
         j++;
@@ -61,8 +47,8 @@ void merge(vector<Games>& data, int left,
     }
 }
 
-// begin is for left index and end is right index
-// of the sub-array of arr to be sorted
+//does a merge sort on the vector of games
+// begin is for left index and end is right index of vector
 void mergeSort(vector<Games>& data, int left, int right){
 
     if (left >= right)

@@ -2,14 +2,14 @@
 #include "Bridges.h"
 #include "DataSource.h"
 #include "data_src/Game.h"
-#include "Games.h"
+#include "../Games.h"
 #include<iostream>
 using namespace std;
 using namespace bridges;
 
 
 
-
+//class for heap sort functions
 class MaxHeap {
 private:
     vector<Games> heap;
@@ -29,6 +29,8 @@ public:
     void insert(const Games &g);
     bool empty() const;
     int size() const;
+    void heapify(vector<Games>& games, int n, int i);
+    void heapSort(vector<Games>& games);
     Games extractMax();
 
 };
