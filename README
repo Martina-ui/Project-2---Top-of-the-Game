@@ -1,0 +1,26 @@
+# Bridges Game Data Project
+
+## Overview
+This C++ project uses the BRIDGES library to access and display IGN game data. The program connects to the Bridges API and retrieves information about video games, displaying details like title, platform, rating, and genres.
+
+## Current State
+The project is fully functional and successfully prints information about the first game in the dataset.
+
+Short instructions to build and run the program that uses the BRIDGES C++ library to fetch/display IGN game data.
+
+## Prerequisites
+- A C++17 toolchain (g++ / clang++)
+- libcurl, rapidjson, jsoncpp and OpenSSL available to the compiler/linker
+- Environment is configured for building the included Bridges sources (see [bridges-cxx/src/Bridges.h](bridges-cxx/src/Bridges.h))
+
+## Important Instructions to Run Program: 
+The program requires valid BRIDGES credentials to access remote datasets. 
+- You must export the secrets using the following commands before running the program so the BRIDGES data source can be used:
+export SECRET_HOLDING_USER_ID=martinadelger   # only needed when you first run the program
+export SECRET_HOLDING_API_KEY=1283988499612   # only needed when you first run the program
+Afterwards you may call "run.sh" to successfully run the program!
+
+## Files / entry points
+Main entry: Menu/main.cpp — program starts here and calls the menu.
+The runtime menu implementation: Menu::run_menu (see Menu/Menu.h).
+Bridges usage: bridges::Bridges and data fetching via bridges::DataSource::getGameData.
